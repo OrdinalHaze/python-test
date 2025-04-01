@@ -12,7 +12,7 @@ from setuptools import Distribution, setup
 try:  # for backwards compatibility with setuptools version < 65
     from setuptools.command.build import build
 except ImportError:
-    from distutils.command.build import build
+    from setuptools.command.build import build
 
 from setuptools.command.install import install
 from wheel.bdist_wheel import bdist_wheel
