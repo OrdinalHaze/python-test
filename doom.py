@@ -39,11 +39,16 @@ def play_game():
             state = game.get_state()
             game_variables = state.game_variables  # Health, Ammo, Score, etc.
             screen_buffer = state.screen_buffer  # Raw pixel data
-            
+
             action = random.choice(actions)  # Random action for now
             reward = game.make_action(action)
-            
-            print(f"Action: {action}, Reward: {reward}, Health: {game_variables[0]}, Ammo: {game_variables[1]}, Score: {game_variables[2]}")
+
+            # Ensure we only access available variables
+            health = game_variables[0] if len(game_variables) > 0 else "N/A"
+            ammo = game_variables[1] if len(game_variables) > 1 else "N/A"
+            score = game_variables[2] if len(game_variables) > 2 else "N/A"
+
+            print(f"Action: {action}, Reward: {reward}, Health: {health}, Ammo: {ammo}, Score: {score}")
             time.sleep(0.02)  # Slow down to visualize
         
         print(f"Episode finished. Total reward: {game.get_total_reward()}\n")
