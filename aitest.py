@@ -13,9 +13,10 @@ genai.configure(api_key=api_key)
 
 # Select the model
 model = genai.GenerativeModel("gemini-1.5-flash")
+x=input("Enter your prompt: ")
 
 # Generate a response
-response = model.generate_content("Which is the first stage in every IoT architecture?")
+response = model.generate_content(x)
 
 # Print the response
 print(response.text)
